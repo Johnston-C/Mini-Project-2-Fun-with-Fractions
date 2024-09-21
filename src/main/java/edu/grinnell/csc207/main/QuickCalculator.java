@@ -55,17 +55,17 @@ public class QuickCalculator {
       lastInput = arg;
       parsingInput = lastInput.split(" ", 0);
       if (parsingInput.length == 0) {
-        System.err.println("Error: Invlaid expression.");
+        System.err.println("Error: Invlaid expression.\n");
       } else if (parsingInput.length == 2) {
         if (parsingInput[0].equals(STORE_STRING)) {
           if ((parsingInput[1].matches(REGISTER_REGEX))) {
             register.store(parsingInput[1].charAt(0), calculator.get());
             pen.printf("%s: STORED\n", lastInput);
           } else {
-            System.err.println("Error: STORE command received invalid register.");
+            System.err.println("Error: STORE command received invalid register.\n");
           } // if / else
         } else {
-          System.err.println("FAILED [Invalid expression]");
+          System.err.println("FAILED [Invalid expression]\n");
         } // if / else
       } else if ((parsingInput.length % 2) == 1) {
         calculator.clear();
@@ -89,7 +89,7 @@ public class QuickCalculator {
               if (register.get(parsingInput[i + 2].charAt(0)) != null) {
                 secondParam = register.get(parsingInput[i + 2].charAt(0));
               } else {
-                System.err.println("Error: Invlaid expression.");
+                System.err.println("Error: Invlaid expression.\n");
               } // if / else
             } else {
               secondParam = new BigFraction(parsingInput[i + 2]);
@@ -100,7 +100,8 @@ public class QuickCalculator {
               calculator.subtract(secondParam);
             } else if (parsingInput[i + 1].equals("*")) {
               calculator.multiply(secondParam);
-            } else if (parsingInput[i + 1].equals("/")) {
+            } else if ((parsingInput[i + 1].equals("/"))
+                       && (!(secondParam.toString().equals("0")))) {
               calculator.divide(secondParam);
             } else {
               allowingOutput = false;
@@ -114,10 +115,10 @@ public class QuickCalculator {
         if (allowingOutput) {
           pen.printf("%s -> %s\n", lastInput, calculator.get());
         } else {
-          pen.printf("%s Failed [Invalid expression]", lastInput);
+          pen.printf("%s Failed [Invalid expression]\n", lastInput);
         } // if / else
       } else {
-        System.err.println("FAILED [Invalid expression]");
+        System.err.println("FAILED [Invalid expression]\n");
       } // if / else if / else if / else
     } // for [input]
     pen.close();

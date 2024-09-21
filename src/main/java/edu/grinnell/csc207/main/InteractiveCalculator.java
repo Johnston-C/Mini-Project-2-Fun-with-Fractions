@@ -82,11 +82,11 @@ public class InteractiveCalculator {
           if (register.get(parsingInput[0].charAt(0)) != null) {
             calculator.add(register.get(parsingInput[0].charAt(0)));
           } else {
-            System.err.println("Error: Invlaid expression.");
+            System.err.println("Error: Invlaid expression.\n");
             allowingOutput = false;
           } // if / else
         } else {
-          System.err.println("Error: Invlaid expression.");
+          System.err.println("Error: Invlaid expression.\n");
           allowingOutput = false;
         } // if / else if / else
         for (int i = 0; i < parsingInput.length - 1; i += 2) {
@@ -96,7 +96,7 @@ public class InteractiveCalculator {
               if (register.get(parsingInput[i + 2].charAt(0)) != null) {
                 secondParam = register.get(parsingInput[i + 2].charAt(0));
               } else {
-                System.err.println("Error: Invlaid expression.");
+                System.err.println("Error: Invlaid expression.\n");
               } // if / else
             } else {
               secondParam = new BigFraction(parsingInput[i + 2]);
@@ -107,15 +107,16 @@ public class InteractiveCalculator {
               calculator.subtract(secondParam);
             } else if (parsingInput[i + 1].equals("*")) {
               calculator.multiply(secondParam);
-            } else if (parsingInput[i + 1].equals("/")) {
+            } else if ((parsingInput[i + 1].equals("/"))
+                       && (!(secondParam.toString().equals("0")))) {
               calculator.divide(secondParam);
             } else {
-              System.err.println("Error: Invalid expression.");
+              System.err.println("Error: Invalid expression.\n");
               allowingOutput = false;
               i = parsingInput.length;
             } // if / else if / else if / else if / else
           } else {
-            System.err.println("Error: Invalid expression.");
+            System.err.println("Error: Invalid expression.\n");
             allowingOutput = false;
             i = parsingInput.length;
           } // if / else
@@ -124,7 +125,7 @@ public class InteractiveCalculator {
           pen.println(calculator.get());
         } // if
       } else {
-        System.err.println("Error: Invalid expression.");
+        System.err.println("Error: Invalid expression.\n");
       } // if / else if / else if / else
     } // while
     input.close();
