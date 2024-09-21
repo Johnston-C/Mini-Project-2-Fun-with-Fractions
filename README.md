@@ -1,4 +1,4 @@
-# Mini-Project 1: Classical Encryption
+# Mini-Project 2: Classical Encryption
 
 Cade Johnston
 
@@ -11,4 +11,4 @@ QuickCalculator runs a four function calculator with a register. It accepts comm
 CITATIONS:
 Oracle (Strings, BigInteger, Scanner, Pattern [for regex documentation])
 
-https://github.com/Johnston-C/Mini-Project-1-Classical-Encryption
+https://github.com/Johnston-C/Mini-Project-2-Fun-with-Fractions/tree/main/src/main/java/edu/grinnell/csc207/util
